@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            background-color: #f2f7f5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #f2f7f5;
+            border-bottom: 2px solid #ccc;
+        }
+        .header .logo {
+            margin-right: 20px;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1f3f3d;
+            padding: 10px 50px;
+            font-size: larger;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+        .nav-container a {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .nav-container a:hover {
+            background-color: #3b706a;
+        }
+        .parent-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 40px;
+        }
+        .box {
+            width: 300px;
+            padding: 30px;
+            text-align: center;
+            color: #1f3f3d;
+            background-color: #ffffff;
+            transition: box-shadow 0.3s ease;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .box:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        input {
+            height: 40px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 10px 0;
+        }
+        label {
+            font-size: larger;
+            color: #1f3f3d;
+        }
+        button {
+            background-color: #ffcc01;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            height: 40px;
+            color: white;
+            font-size: larger;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e5b801;
+        }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="svecwlogo.jpg" class="logo" alt="SVECW Logo" width="100">
+        <h1>SHRI VISHNU ENGINEERING COLLEGE FOR WOMEN, BHIMAVARAM</h1>
+    </div>
+
+    <div class="nav-container">
+        <a href="Homepage.html">Home</a>
+        <a href="clublist.html">Club Events</a>
+        <a href="Collegeevents.html">College Events</a>
+        <a href="loginpage.html">Login</a>
+    </div>
+
+    <div class="parent-container">
+        <div class="box">
+            <form id="facultyForm" action="login_faculty.php" method="post">
+                <h2>Faculty Login</h2>
+                <label for="facultyUsername">Username:</label><br>
+                <input type="text" id="facultyUsername" name="username" placeholder="Enter your Username" required><br>
+                <label for="facultyPassword">Password:</label><br>
+                <input type="password" id="facultyPassword" name="password" placeholder="Enter your Password" required><br><br>
+                <button type="submit">Login</button>
+                <!-- Display error message -->
+                <?php if (isset($_GET['error']) && $_GET['error'] === 'faculty') : ?>
+                    <div class="error">Invalid username or password</div>
+                <?php endif; ?>
+            </form>
+        </div>
+
+        <div class="box">
+            <form id="coordinatorForm" action="login_coordinator.php" method="post">
+                <h2>Coordinator Login</h2>
+                <label for="coordinatorUsername">Username:</label><br>
+                <input type="text" id="coordinatorUsername" name="username" placeholder="Enter your Username" required><br>
+                <label for="coordinatorPassword">Password:</label><br>
+                <input type="password" id="coordinatorPassword" name="password" placeholder="Enter your Password" required><br><br>
+                <button type="submit">Login</button>
+                <!-- Display error message -->
+                <?php if (isset($_GET['error']) && $_GET['error'] === 'coordinator') : ?>
+                    <div class="error">Invalid username or password</div>
+                <?php endif; ?>
+            </form>
+        </div>
+
+        <div class="box">
+            <form id="studentForm" action="login_student.php" method="post">
+                <h2>Student Login</h2>
+                <label for="studentUsername">Username:</label><br>
+                <input type="text" id="studentUsername" name="username" placeholder="Enter your Username" required><br>
+                <label for="studentPassword">Password:</label><br>
+                <input type="password" id="studentPassword" name="password" placeholder="Enter your Password" required><br><br>
+                <button type="submit">Login</button>
+                <!-- Display error message -->
+                <?php if (isset($_GET['error']) && $_GET['error'] === 'student') : ?>
+                    <div class="error">Invalid username or password</div>
+                <?php endif; ?>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

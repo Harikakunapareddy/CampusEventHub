@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f7f5;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #f2f7f5;
+            border-bottom: 2px solid #ccc;
+        }
+        .header .logo {
+            margin-right: 20px;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1f3f3d;
+            padding: 10px 50px;
+            font-size: larger;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+        .nav-container a {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .nav-container a:hover {
+            background-color: #3b706a;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .error-message {
+            color: red;
+            font-size: larger;
+        }
+        .retry-link {
+            margin-top: 20px;
+            display: inline-block;
+            background-color: #ffcc01;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+        }
+        .retry-link:hover {
+            background-color: #e5b801;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="logo.png" class="logo" alt="SVECW Logo" width="100">
+        <h1>SHRI VISHNU ENGINEERING COLLEGE FOR WOMEN, BHIMAVARAM</h1>
+    </div>
+
+    <div class="nav-container">
+        <a href="index.html">Home</a>
+        <a href="collegeEvents.html">College Events</a>
+        <a href="clubEvents.html">Club Events</a>
+        <a href="coordinator.html">View Dashboard Events</a>
+        <a href="login.html">Login</a>
+    </div>
+
+    <div class="container">
+        <h1 style="text-align: center; color: rgb(0, 55, 255);">Login Error</h1>
+        <p class="error-message" id="errorMessage">An error occurred. Please try again.</p>
+        <a href="clubLogin.html" class="retry-link">Retry Login</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            const errorMessage = document.getElementById('errorMessage');
+
+            switch (error) {
+                case 'emptyfields':
+                    errorMessage.textContent = 'Please fill in all the fields.';
+                    break;
+                case 'sqlerror':
+                    errorMessage.textContent = 'A database error occurred. Please try again later.';
+                    break;
+                case 'invalidcredentials':
+                    errorMessage.textContent = 'Invalid username or password. Please try again.';
+                    break;
+                default:
+                    errorMessage.textContent = 'An error occurred. Please try again.';
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
